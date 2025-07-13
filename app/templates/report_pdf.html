@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fff; color: #222; margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: 0 auto; padding: 32px; }
+    h1, h2, h3, h4 { color: #2563eb; margin-bottom: 0.5em; }
+    .section { margin-bottom: 2em; }
+    .score { font-size: 2.5em; color: #22c55e; font-weight: bold; }
+    .list { margin: 0 0 1em 1.5em; }
+    .badge { display: inline-block; background: #2563eb; color: #fff; border-radius: 6px; padding: 0.2em 0.7em; font-size: 1em; margin-right: 0.5em; }
+    .check { color: #22c55e; font-weight: bold; }
+    .cross { color: #e11d48; font-weight: bold; }
+    .alert { background: #fffbe6; border-left: 4px solid #facc15; padding: 1em; margin-bottom: 1em; }
+    .success { background: #e6fffa; border-left: 4px solid #22c55e; }
+    .card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 1.5em; margin-bottom: 1.5em; }
+    ul { padding-left: 1.5em; }
+    li { margin-bottom: 0.3em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AI Resume Reviewer & Job Matcher</h1>
+    <div class="section">
+      <h2>Resume–Job Fit Score</h2>
+      <div class="score">{{ fit_score }}%</div>
+    </div>
+    <div class="section">
+      <h2>Matched Skills</h2>
+      <ul>
+        {% for skill in matched_skills %}
+          <li>{{ skill }}</li>
+        {% else %}
+          <li>No matched skills found.</li>
+        {% endfor %}
+      </ul>
+      <h2>Missing Skills</h2>
+      <ul>
+        {% for skill in missing_skills %}
+          <li>{{ skill }}</li>
+        {% else %}
+          <li>No missing skills found.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="section">
+      <h2>ATS Optimization Report</h2>
+      <ul>
+        {% for label, desc in ats_report.criteria %}
+          {% if label in ats_report.issues %}
+            <li class="cross">&#10060; <b>{{ label }}</b>: {{ desc }}</li>
+          {% else %}
+            <li class="check">&#10004; <b>{{ label }}</b>: {{ desc }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      {% if ats_report.suggestions %}
+        <div class="alert">
+          <b>Suggestions:</b>
+          <ul>
+            {% for s in ats_report.suggestions %}
+              <li>{{ s }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% else %}
+        <div class="alert success">Your resume is highly ATS compatible!</div>
+      {% endif %}
+    </div>
+    <div class="section">
+      <h2>AI Suggestions</h2>
+      <ul>
+        {% for suggestion in improvements %}
+          <li>{{ suggestion }}</li>
+        {% else %}
+          <li>No suggestions available.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Summary</h2>
+      <div>{{ summary }}</div>
+    </div>
+  </div>
+</body>
+</html> 

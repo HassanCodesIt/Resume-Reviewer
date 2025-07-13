@@ -1,0 +1,9 @@
+flask
+flask-wtf
+transformers
+sentence-transformers
+pdfminer.six
+scikit-learn
+spacy
+python-dotenv 
+gunicorn 

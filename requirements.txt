@@ -3,7 +3,8 @@ flask-wtf
 transformers
 sentence-transformers
 pdfminer.six
-scikit-learn
+numpy==1.24.3
+scikit-learn==1.3.0
 spacy
 python-dotenv 
 gunicorn 

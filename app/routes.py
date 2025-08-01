@@ -80,15 +80,30 @@ def results():
         print(f"[DEBUG] Exception reading files: {e}")
         flash('Could not read uploaded files. Please try again.', 'danger')
         return redirect(url_for('main.index'))
-    resume_emb = get_embeddings(resume_text)
-    job_emb = get_embeddings(job_text)
-    fit_score = int(compute_cosine_similarity(resume_emb, job_emb) * 100)
-    fit_score = max(0, min(100, fit_score))
-    jd_skills = set(extract_skills(job_text))
-    resume_skills = set(extract_skills(resume_text))
-    matched_skills = list(resume_skills & jd_skills)
-    missing_skills = top_missing_skills(jd_skills, resume_skills, limit=10)
-    feedback = generate_feedback(resume_text, job_text)
+    try:
+        resume_emb = get_embeddings(resume_text)
+        job_emb = get_embeddings(job_text)
+        fit_score = int(compute_cosine_similarity(resume_emb, job_emb) * 100)
+        fit_score = max(0, min(100, fit_score))
+    except Exception as e:
+        print(f"[DEBUG] Error in similarity computation: {e}")
+        fit_score = 50  # Default neutral score
+        
+    try:
+        jd_skills = set(extract_skills(job_text))
+        resume_skills = set(extract_skills(resume_text))
+        matched_skills = list(resume_skills & jd_skills)
+        missing_skills = top_missing_skills(jd_skills, resume_skills, limit=10)
+    except Exception as e:
+        print(f"[DEBUG] Error in skills extraction: {e}")
+        matched_skills = []
+        missing_skills = []
+        
+    try:
+        feedback = generate_feedback(resume_text, job_text)
+    except Exception as e:
+        print(f"[DEBUG] Error in feedback generation: {e}")
+        feedback = {'improvements': ['Unable to generate feedback due to technical issues.'], 'summary': 'Analysis completed with limited functionality.'}
     def fallback_list(val, raw):
         if not val or val == ['**'] or all(x.strip() in ('', '**') for x in val):
             return [raw] if raw else ['[No data]']

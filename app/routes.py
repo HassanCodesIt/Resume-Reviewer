@@ -1,6 +1,7 @@
 import os
 import uuid
-from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, session, Markup, send_file, make_response
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, session, send_file, make_response
+from markupsafe import Markup
 from werkzeug.utils import secure_filename
 from .resume_utils import get_text_from_input, extract_text_from_pdf, check_ats_compatibility
 from .similarity_engine import get_embeddings, compute_cosine_similarity, extract_skills, top_missing_skills

@@ -163,4 +163,9 @@ def download_report():
         return response
     except Exception as e:
         flash('PDF export is currently unavailable. Please install wkhtmltopdf or contact support if you need this feature.', 'danger')
-        return redirect(url_for('main.results')) 
+        return redirect(url_for('main.results'))
+
+@main.route('/health')
+def health_check():
+    """Health check endpoint for deployment monitoring"""
+    return {'status': 'healthy', 'service': 'resume-reviewer'}, 200 

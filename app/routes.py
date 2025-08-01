@@ -168,4 +168,9 @@ def download_report():
 @main.route('/health')
 def health_check():
     """Health check endpoint for deployment monitoring"""
-    return {'status': 'healthy', 'service': 'resume-reviewer'}, 200 
+    return {'status': 'healthy', 'service': 'resume-reviewer'}, 200
+
+@main.route('/test')
+def test_endpoint():
+    """Simple test endpoint to verify deployment"""
+    return {'message': 'Resume Reviewer is running!', 'status': 'ok'}, 200 

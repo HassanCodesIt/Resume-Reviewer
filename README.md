@@ -286,4 +286,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ by [HassanCodesIt](https://github.com/HassanCodesIt)**
 
-*Transform your job search with AI-powered insights!* 
+*Transform your job search with AI-powered insights!*

@@ -15,8 +15,17 @@ try:
     logger.info("Successfully loaded SBERT and spaCy models")
 except Exception as e:
     logger.error(f"Error loading models: {e}")
-    sbert_model = None
-    nlp = None
+    # Try to download spaCy model if not available
+    try:
+        import subprocess
+        subprocess.run(['python', '-m', 'spacy', 'download', 'en_core_web_sm'], check=True)
+        nlp = spacy.load('en_core_web_sm')
+        logger.info("Successfully downloaded and loaded spaCy model")
+    except Exception as download_error:
+        logger.error(f"Failed to download spaCy model: {download_error}")
+        nlp = None
+    
+    sbert_model = None if 'sbert_model' not in locals() else sbert_model
 
 # Curated list of common AI/ML/Data/Software skills
 CURATED_SKILLS = set([

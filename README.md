@@ -1,172 +1,289 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/build-passing-brightgreen?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/release-v1.0.0-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/coverage-95%25-success?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/contributors-welcome-orange?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/downloads-1k%2B-blueviolet?style=for-the-badge"/>
-</p>
+# 🤖 AI Resume Reviewer & Job Matcher
 
-# **Resume Reviewer**
-**AI-Powered Resume & Job Fit Analyzer**
+**Intelligent Resume Analysis with LLM-Powered Feedback**
 
-> *Snapshot:*
-> ![App Dashboard Screenshot](docs/snapshot.png)  
-> _Visual: Upload resume + JD, get instant analytics, feedback, and a pro report. (Replace with your own GIF/screenshot)_
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org)
+[![Flask](https://img.shields.io/badge/Flask-3.0+-green.svg)](https://flask.palletsprojects.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Deploy](https://img.shields.io/badge/Deploy-Render-00AD9F.svg)](https://render.com)
 
----
+> **Transform your job search with AI-powered resume analysis, skill gap detection, and personalized feedback.**
 
-## ✨ Description & Vision
+## ✨ Features
 
-**Resume Reviewer** is your no-nonsense, next-gen resume reviewer. Upload your resume and a job description, and get instant, actionable feedback, skill gap analysis, ATS optimization, and a match score—all in a slick dashboard.  
-We’re building on the best of AI, NLP, and classic resume wisdom. This project fuses LLMs, semantic search, and industry-standard ATS checks, so you can level up your job hunt and keep it 100. No cap: this is the future of job matching, but with respect for what’s always worked.
+### 🎯 **Smart Resume Analysis**
+- **Semantic Job Matching** - AI-powered similarity scoring
+- **Skill Gap Analysis** - Identify missing skills for job requirements
+- **ATS Optimization** - Pass automated screening systems
+- **Real-time Feedback** - Instant actionable suggestions
 
----
+### 🤖 **Advanced AI Models**
+- **🤖 Sentence Transformers (all-MiniLM-L6-v2)** - State-of-the-art semantic text analysis
+- **🧠 spaCy NLP Engine** - Professional-grade natural language processing
+- **🔍 Skill Recognition AI** - Intelligent detection of 200+ technical skills
+- **📊 Cosine Similarity Scoring** - Mathematical precision in job matching
+- **💡 LLM-Powered Feedback** - GPT-style suggestions for resume improvement
 
-## 🖥️ Tech Stack
+### 📊 **Comprehensive Reports**
+- **PDF Export** - Professional downloadable reports
+- **Visual Dashboard** - Interactive results display
+- **Skill Comparison** - Side-by-side skill analysis
+- **Improvement Roadmap** - Actionable next steps
 
-**Frontend:**
-- Bootstrap 5 (UI framework)
-- Chart.js (visual analytics)
-- Jinja2 (templating)
-- Custom JavaScript (main.js)
-- Custom CSS (styles.css)
+## 🚀 Quick Start
 
-**Backend:**
-- Python 3.8+
-- Flask (web framework)
-- Flask-WTF (form handling, CSRF)
-- Jinja2 (server-side rendering)
-- python-dotenv (env management)
+### Prerequisites
+- Python 3.11+
+- pip package manager
+- Modern web browser
 
-**AI & NLP:**
-- Hugging Face Inference API (LLM feedback, e.g., Llama 3)
-- Sentence Transformers (all-MiniLM-L6-v2 for embeddings)
-- spaCy (en_core_web_sm for NLP/skills)
-- scikit-learn (cosine similarity)
+### Installation
 
-**PDF & File Handling:**
-- pdfminer.six (PDF text extraction)
-- pdfkit (PDF export)
-- wkhtmltopdf (required for PDF export)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/HassanCodesIt/Resume-Reviewer.git
+   cd Resume-Reviewer
+   ```
 
-**Other:**
-- Environment variables for secrets/API keys
-- Session-based state (no persistent DB)
-- Modular, extensible codebase
+2. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   python -m spacy download en_core_web_sm
+   ```
 
----
+3. **Set up environment variables**
+   ```bash
+   # Create .env file
+   echo "SECRET_KEY=your-secret-key-here" > .env
+   ```
 
-## 🗂️ Table of Contents
+4. **Run the application**
+   ```bash
+   python run.py
+   ```
 
-- [Installation](#installation)
-- [Features](#usage--features)
-- [Usage](#usage--features)
-- [Architecture](#architecture--mermaid-diagram)
-- [Mermaid Diagram](#architecture--mermaid-diagram)
-- [Contributing](#contributing--community)
-- [License](#license--support)
+5. **Open your browser**
+   ```
+   http://localhost:5000
+   ```
 
----
+## 🛠️ Complete Tech Stack
 
-## ⚡ Installation
+### **🌐 Frontend Technologies**
+- **🎨 Bootstrap 5** - Modern, responsive UI framework
+- **📊 Chart.js** - Interactive data visualization and analytics
+- **🔧 Jinja2** - Server-side templating engine
+- **💅 Custom CSS** - Enhanced styling and animations
+- **⚡ Custom JavaScript** - Dynamic user interactions
+- **📱 Responsive Design** - Mobile-first approach
 
-- **Prerequisites:** Python 3.8+, pip, [wkhtmltopdf](https://wkhtmltopdf.org/downloads.html) (for PDF export), Hugging Face account.
-- **Clone & install:**
-  ```bash
-  git clone https://github.com/your-org/resume-insight-ai.git
-  cd resume-insight-ai
-  pip install -r requirements.txt
-  python -m spacy download en_core_web_sm
-  ```
-- **Set up `.env`:**
-  ```
-  HF_TOKEN=your_huggingface_token
-  SECRET_KEY=your_flask_secret
-  ```
-- **Run:**
-  ```bash
-  python run.py
-  ```
-  Visit [http://localhost:5000](http://localhost:5000)
+### **⚙️ Backend Framework**
+- **🐍 Flask** - Lightweight Python web framework
+- **🛡️ Flask-WTF** - Form handling and CSRF protection
+- **🔐 python-dotenv** - Environment variable management
+- **🔄 Session Management** - User state handling
+- **📁 File Upload Handling** - Secure file processing
 
----
+### **🤖 AI & Machine Learning**
+- **🧠 Sentence Transformers (all-MiniLM-L6-v2)** - State-of-the-art semantic text embeddings
+- **🔍 spaCy (en_core_web_sm)** - Professional NLP pipeline with 200+ skill recognition
+- **📈 scikit-learn** - Machine learning algorithms for similarity scoring
+- **🚀 Transformers (Hugging Face)** - Advanced language model integration
+- **📊 Cosine Similarity** - Mathematical precision in job-resume matching
+- **💡 Lazy Loading** - Memory-optimized model loading
+- **🔄 Fallback Mechanisms** - Graceful error handling
 
-## 🚀 Usage & Features
+### **📄 File Processing & Export**
+- **📖 pdfminer.six** - Advanced PDF text extraction
+- **📋 pdfkit** - PDF report generation
+- **🌐 wkhtmltopdf** - HTML to PDF conversion
+- **📁 File Upload System** - Secure document handling
+- **🗂️ Temporary File Management** - Clean file processing
 
-**How it works:**  
-Upload or paste your resume and a job description (PDF or text). Click “Analyze.”  
-Get a dashboard with:
+### **🚀 Production & Deployment**
+- **🐳 Gunicorn** - Production WSGI server
+- **☁️ Render** - Cloud deployment platform
+- **🔧 Procfile** - Deployment configuration
+- **📦 Requirements Management** - Dependency optimization
+- **🌍 Environment Variables** - Secure configuration
 
-- **Semantic Job Fit Score** — See how well you match (with a breakdown).
-- **Skill Extraction & Gap Analysis** — Instantly see what you have and what you’re missing.
-- **AI-Powered Feedback** — LLM-generated, actionable, and categorized suggestions.
-- **ATS Optimization Report** — Checklist for passing automated screeners.
-- **Visual Analytics** — Pie charts, gauges, word clouds.
-- **Downloadable PDF Report** — Print-friendly, pro-style.
+### **🔧 Development & Tools**
+- **📝 Git** - Version control
+- **🐛 Error Handling** - Comprehensive logging
+- **⚡ Performance Optimization** - Memory and speed improvements
+- **🛠️ Debugging Tools** - Development assistance
 
-**Example:**
-```text
-Match Score: 82% (Strong Fit)
-Missing Skills: AWS, CI/CD
-AI Suggestion: “Add hands-on cloud experience and link to your GitHub.”
-```
-![Dashboard Example](docs/dashboard.gif)
+## 📖 Complete Workflow Guide
 
----
+### **🔄 Step-by-Step Process**
 
-## 🏗️ Architecture / Mermaid Diagram
+#### **📤 Step 1: Document Upload**
+- **📄 Resume Upload** - PDF or text format supported
+- **📋 Job Description** - Upload file or paste text
+- **🛡️ Security** - Files processed securely with Flask-WTF
+- **📁 Storage** - Temporary session-based storage
 
-This app is built on a modular, scalable stack:  
-- **Frontend:** Bootstrap 5, Chart.js, custom JS/CSS, Jinja2 templates  
-- **Backend:** Flask, Hugging Face LLMs, Sentence Transformers, spaCy, scikit-learn, pdfminer.six  
-- **PDF Export:** pdfkit + wkhtmltopdf  
-- **No DB:** All processing is in-memory/session for privacy
+#### **🤖 Step 2: AI Processing Pipeline**
+- **📖 Text Extraction** - pdfminer.six extracts text from PDFs
+- **🧠 NLP Processing** - spaCy analyzes document content
+- **📊 Semantic Analysis** - Sentence Transformers create embeddings
+- **🔍 Skill Detection** - AI identifies 200+ technical skills
+- **📈 Similarity Scoring** - Cosine similarity calculates job fit
+
+#### **💡 Step 3: AI Insights Generation**
+- **🎯 Match Score** - Percentage-based job fit analysis
+- **📊 Skills Comparison** - Resume vs. job requirements
+- **🔍 Gap Analysis** - Missing skills identification
+- **💭 LLM Feedback** - Personalized improvement suggestions
+
+#### **📊 Step 4: Results Dashboard**
+- **📱 Responsive UI** - Bootstrap 5 mobile-first design
+- **📊 Visual Analytics** - Chart.js interactive charts
+- **📋 Detailed Reports** - Comprehensive analysis results
+- **📄 PDF Export** - Professional downloadable reports
+
+#### **🚀 Step 5: Production Deployment**
+- **🐳 Gunicorn Server** - Production WSGI server
+- **☁️ Render Platform** - Cloud deployment
+- **🔧 Environment Config** - Secure variable management
+- **📦 Optimized Dependencies** - Memory-efficient deployment
+
+## 🏗️ AI-Powered Architecture
 
 ```mermaid
-flowchart TD
-  U[User] --> F[Frontend (Bootstrap, JS, Jinja2)]
-  F --> B[Flask Backend]
-  B -->|PDF/Text| X[Text Extraction]
-  B -->|NLP| S[Skill Extraction (spaCy)]
-  B -->|Embeddings| E[Semantic Scoring (SBERT)]
-  B -->|LLM| L[Hugging Face Inference]
-  B -->|ATS| A[ATS Checks]
-  B --> D[Dashboard & PDF Export]
-  style L fill:#f9f,stroke:#333,stroke-width:2px
-  style E fill:#bbf,stroke:#333,stroke-width:2px
+graph TD
+    A[📤 User Upload] --> B[📄 Text Extraction]
+    B --> C[🤖 AI Analysis Engine]
+    
+    C --> D[🧠 spaCy NLP Pipeline]
+    C --> E[📊 Sentence Transformers]
+    C --> F[💡 LLM Feedback System]
+    
+    D --> G[🔍 Skill Recognition AI]
+    E --> H[📈 Cosine Similarity Scoring]
+    F --> I[💭 AI Feedback Generation]
+    
+    G --> J[📊 Results Dashboard]
+    H --> J
+    I --> J
+    
+    J --> K[📋 PDF Export]
+    J --> L[📱 Responsive UI]
+    
+    subgraph "Frontend Technologies"
+        L --> M[🎨 Bootstrap 5]
+        L --> N[📊 Chart.js]
+        L --> O[🔧 Jinja2 Templates]
+    end
+    
+    subgraph "Backend Processing"
+        B --> P[📖 pdfminer.six]
+        B --> Q[🛡️ Flask-WTF Forms]
+        B --> R[🔐 Session Management]
+    end
+    
+    subgraph "AI Models"
+        D --> S[🔍 200+ Skill Detection]
+        E --> T[📊 Semantic Embeddings]
+        F --> U[💡 LLM Suggestions]
+    end
+    
+    subgraph "Production"
+        J --> V[🐳 Gunicorn Server]
+        V --> W[☁️ Render Deployment]
+    end
+    
+    style C fill:#ff6b6b,stroke:#333,stroke-width:3px
+    style D fill:#4ecdc4,stroke:#333,stroke-width:2px
+    style E fill:#45b7d1,stroke:#333,stroke-width:2px
+    style F fill:#96ceb4,stroke:#333,stroke-width:2px
+    style J fill:#feca57,stroke:#333,stroke-width:2px
 ```
 
-*Diagram: User uploads → frontend → backend → text extraction, skills, scoring, LLM feedback, ATS → dashboard & PDF. No persistent storage. All AI magic, no data hoarding.*
+## 🔧 Configuration
+
+### **Environment Variables**
+```bash
+SECRET_KEY=your-secret-key-here
+HF_TOKEN=your-huggingface-token  # Optional for enhanced LLM features
+```
+
+### **Deployment**
+The application is optimized for deployment on Render:
+
+- **Runtime:** Python 3.13.4
+- **Build Command:** `pip install -r requirements.txt`
+- **Start Command:** `gunicorn run:app --bind 0.0.0.0:$PORT`
+
+## 🐛 Troubleshooting
+
+### **🤖 AI Model Optimization**
+
+1. **Memory Issues on Deployment**
+   - ✅ **Fixed:** Implemented lazy loading for AI models
+   - ✅ **Fixed:** Optimized dependencies for production
+   - ✅ **Enhanced:** Sentence Transformers load only when needed
+
+2. **Import Errors**
+   - ✅ **Fixed:** Updated Flask imports for compatibility
+   - ✅ **Fixed:** Added markupsafe dependency
+
+3. **Model Loading Issues**
+   - ✅ **Fixed:** Added fallback mechanisms for spaCy
+   - ✅ **Fixed:** Automatic spaCy model download
+   - ✅ **Enhanced:** Graceful degradation when models fail
+
+### **Local Development**
+```bash
+# If you encounter issues
+pip install --upgrade pip
+pip install -r requirements.txt --force-reinstall
+python -m spacy download en_core_web_sm
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get started:
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Make your changes**
+4. **Test thoroughly**
+5. **Submit a pull request**
+
+### **Development Setup**
+```bash
+# Install development dependencies
+pip install -r requirements.txt
+python -m spacy download en_core_web_sm
+
+# Run in development mode
+python run.py
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **🤖 Hugging Face** - For state-of-the-art transformer models and inference API
+- **🧠 spaCy** - For professional-grade natural language processing capabilities
+- **📊 Sentence Transformers** - For advanced semantic text analysis
+- **🔧 Flask** - For the lightweight web framework
+- **🎨 Bootstrap** - For the responsive UI components
+
+## 📞 Support
+
+- **Issues:** [GitHub Issues](https://github.com/HassanCodesIt/Resume-Reviewer/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/HassanCodesIt/Resume-Reviewer/discussions)
+- **Email:** [Contact via GitHub](https://github.com/HassanCodesIt)
 
 ---
 
-## 🤝 Contributing & Community
+**Made with ❤️ by [HassanCodesIt](https://github.com/HassanCodesIt)**
 
-- **Fork, branch, PR:** Standard GitHub flow.  
-- **Discussions:** Open issues for bugs/ideas.  
-- **Code of Conduct:** Be kind, keep it constructive, respect all contributors.  
-- **Docs:** See `/docs/` for diagrams, `/CONTRIBUTING.md` for guidelines.  
-- **Open-source etiquette:** Let’s build something dope, but keep it professional. Your PRs shape the future—no gatekeeping.
-
----
-
-## 📜 License & Support
-
-- **License:** MIT — use, remix, and share.
-- **Contact:** [project@yourdomain.com](mailto:project@yourdomain.com) or open an issue.
-- **Feedback:** Always welcome—file issues, suggest features, or just vibe in the discussions.
-
----
-
-## 📝 Footer / Additional Notes
-
-- **Badges:** Keep them fresh—auto-update via CI.
-- **Docs:** Store diagrams in `/docs/diagrams`, Mermaid `.mmd` files under version control.
-- **Regenerate badges:** Set up in your pipeline.
-- **Thanks for checking out Resume Reviewer.**  
-  Keep it 100, and let’s make job search smarter for everyone.
-
----
-
-*This README is alpha quality, just like the app. But with your help, it’ll be legendary. No cap.* 
+*Transform your job search with AI-powered insights!* 

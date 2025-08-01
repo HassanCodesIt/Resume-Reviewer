@@ -8,24 +8,37 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Load models globally for efficiency
-try:
-    sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
-    nlp = spacy.load('en_core_web_sm')
-    logger.info("Successfully loaded SBERT and spaCy models")
-except Exception as e:
-    logger.error(f"Error loading models: {e}")
-    # Try to download spaCy model if not available
-    try:
-        import subprocess
-        subprocess.run(['python', '-m', 'spacy', 'download', 'en_core_web_sm'], check=True)
-        nlp = spacy.load('en_core_web_sm')
-        logger.info("Successfully downloaded and loaded spaCy model")
-    except Exception as download_error:
-        logger.error(f"Failed to download spaCy model: {download_error}")
-        nlp = None
+# Initialize models as None for lazy loading
+sbert_model = None
+nlp = None
+
+def _load_models():
+    """Lazy load models only when needed"""
+    global sbert_model, nlp
     
-    sbert_model = None if 'sbert_model' not in locals() else sbert_model
+    if sbert_model is None:
+        try:
+            sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
+            logger.info("Successfully loaded SBERT model")
+        except Exception as e:
+            logger.error(f"Error loading SBERT model: {e}")
+            sbert_model = None
+    
+    if nlp is None:
+        try:
+            nlp = spacy.load('en_core_web_sm')
+            logger.info("Successfully loaded spaCy model")
+        except Exception as e:
+            logger.error(f"Error loading spaCy model: {e}")
+            # Try to download spaCy model if not available
+            try:
+                import subprocess
+                subprocess.run(['python', '-m', 'spacy', 'download', 'en_core_web_sm'], check=True)
+                nlp = spacy.load('en_core_web_sm')
+                logger.info("Successfully downloaded and loaded spaCy model")
+            except Exception as download_error:
+                logger.error(f"Failed to download spaCy model: {download_error}")
+                nlp = None
 
 # Curated list of common AI/ML/Data/Software skills
 CURATED_SKILLS = set([
@@ -37,6 +50,8 @@ CURATED_SKILLS = set(s.lower() for s in CURATED_SKILLS)
 
 def get_embeddings(text):
     """Get embeddings with error handling and fallback"""
+    _load_models()
+    
     if sbert_model is None:
         logger.error("SBERT model not loaded, returning fallback embedding")
         # Return a simple fallback embedding
@@ -67,6 +82,8 @@ def compute_cosine_similarity(emb1, emb2):
 
 def extract_skills(text, skill_list=None):
     """Extract skills with error handling"""
+    _load_models()
+    
     if nlp is None:
         logger.error("spaCy model not loaded, returning empty skills list")
         return []

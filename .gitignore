@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+uploads/
+instance/
+*.sqlite3
+*.db
+.DS_Store
+.vscode/
+.idea/
+*.log
+*.pot
+*.mo
+*.egg-info/
+*.bak
+*.swp
+*.tmp
+*.pdf
+*.out
+*.mmd
+# OS generated
+Thumbs.db
+ehthumbs.db
+Icon?
+# PyInstaller
+build/
+dist/
+# Jupyter
+.ipynb_checkpoints/ 

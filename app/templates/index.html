@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8 col-md-10">
+    <div class="modern-card p-5 mb-4">
+      <h2 class="mb-4 fw-bold text-primary">Resume & Job Description Input</h2>
+      <form id="analyze-form" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="resume_file" class="form-label">Upload Resume (PDF):</label>
+          <input class="form-control" type="file" id="resume_file" name="resume_file" accept="application/pdf">
+        </div>
+        <div class="mb-3">
+          <label for="resume_text" class="form-label">Or Paste Resume Text:</label>
+          <textarea class="form-control" id="resume_text" name="resume_text" rows="6" placeholder="Paste your resume here..."></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="job_file" class="form-label">Upload Job Description (PDF):</label>
+          <input class="form-control" type="file" id="job_file" name="job_file" accept="application/pdf">
+        </div>
+        <div class="mb-3">
+          <label for="job_text" class="form-label">Or Paste Job Description Text:</label>
+          <textarea class="form-control" id="job_text" name="job_text" rows="6" placeholder="Paste the job description here..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg w-100">Analyze</button>
+        <div class="form-text mt-3 text-muted">Your data is processed securely and never stored. Supported formats: PDF or plain text.</div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,9 @@
+body { background: #f4f6fa; }
+.modern-card { box-shadow: 0 4px 24px rgba(0,0,0,0.07); border-radius: 18px; background: #fff; transition: box-shadow 0.2s; }
+.modern-card:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.12); }
+.btn-primary, .btn-outline-primary { border-radius: 8px; font-weight: 600; }
+.btn-primary { background: linear-gradient(90deg, #2563eb 0%, #1e293b 100%); border: none; }
+.btn-primary:hover, .btn-outline-primary:hover { background: #1e293b; color: #fff; }
+.badge.bg-primary { background: linear-gradient(90deg, #2563eb 0%, #1e293b 100%) !important; }
+.spinner-modal .modal-content { background: rgba(30,41,59,0.7); border: none; box-shadow: none; }
+.spinner-border { width: 4rem; height: 4rem; border-width: 0.4em; } 

@@ -136,14 +136,37 @@ def results():
         'summary': summary,
         'ats_report': ats_report
     }
-    return render_template('results.html',
-        fit_score=fit_score,
-        matched_skills=matched_skills,
-        missing_skills=missing_skills,
-        improvements=improvements_html,
-        summary=summary_html,
-        ats_report=ats_report
-    )
+    # Add debugging
+    print(f"[DEBUG] Rendering results with fit_score: {fit_score}")
+    print(f"[DEBUG] Matched skills: {matched_skills}")
+    print(f"[DEBUG] Missing skills: {missing_skills}")
+    print(f"[DEBUG] ATS report: {ats_report}")
+    
+    try:
+        return render_template('results.html',
+            fit_score=fit_score,
+            matched_skills=matched_skills,
+            missing_skills=missing_skills,
+            improvements=improvements_html,
+            summary=summary_html,
+            ats_report=ats_report
+        )
+    except Exception as e:
+        print(f"[DEBUG] Template rendering error: {e}")
+        # Fallback to a simple error page
+        return f"""
+        <html>
+        <head><title>Results</title></head>
+        <body>
+        <h1>Analysis Results</h1>
+        <p>Fit Score: {fit_score}%</p>
+        <p>Matched Skills: {matched_skills}</p>
+        <p>Missing Skills: {missing_skills}</p>
+        <p>Summary: {summary_html}</p>
+        <a href="/">Back to Home</a>
+        </body>
+        </html>
+        """
 
 @main.route('/download_report')
 def download_report():
@@ -173,4 +196,20 @@ def health_check():
 @main.route('/test')
 def test_endpoint():
     """Simple test endpoint to verify deployment"""
-    return {'message': 'Resume Reviewer is running!', 'status': 'ok'}, 200 
+    return {'message': 'Resume Reviewer is running!', 'status': 'ok'}, 200
+
+@main.route('/test-results')
+def test_results():
+    """Test results page with sample data"""
+    return render_template('results.html',
+        fit_score=75,
+        matched_skills=['Python', 'Flask', 'Machine Learning'],
+        missing_skills=['AWS', 'Docker'],
+        improvements=['Add cloud experience', 'Include containerization skills'],
+        summary='Strong technical background with room for improvement in cloud technologies.',
+        ats_report={
+            'criteria': [('Section Headers', 'Clear section headers'), ('Keyword Density', 'Good keyword usage')],
+            'issues': ['Contact Info'],
+            'suggestions': ['Add contact info in main body']
+        }
+    ) 

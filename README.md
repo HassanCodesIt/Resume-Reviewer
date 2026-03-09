@@ -9,6 +9,14 @@
 
 > **Transform your job search with AI-powered resume analysis, skill gap detection, and personalized feedback.**
 
+## 📸 Screenshots
+
+### Upload Form
+![Resume & Job Description Upload Form](screenshots/upload-form.png)
+
+### Results Dashboard
+![AI Analysis Results Dashboard](screenshots/results-dashboard.png)
+
 ## ✨ Features
 
 ### 🎯 **Smart Resume Analysis**
